@@ -13,12 +13,14 @@ namespace TDD_Practice.Test
         [Test]
         public void GIVEN_number___WHEN_reverse___THEN_reversed_number()
         {
-            //ReverseNumberEqual(1, 1);
-            //ReverseNumberEqual(-1, -1);
-            //ReverseNumberEqual(0, 0);
-            //ReverseNumberEqual(12, 21);
-            //ReverseNumberEqual(-12, -21);
+            ReverseNumberEqual(1, 1);
+            ReverseNumberEqual(-1, -1);
+            ReverseNumberEqual(0, 0);
+            ReverseNumberEqual(12, 21);
+            ReverseNumberEqual(-12, -21);
             ReverseNumberEqual(123, 321);
+            ReverseNumberEqual(-123, -321);
+            ReverseNumberEqual(1234, 4321);
         }
 
         private static void ReverseNumberEqual(int targetNumber, int expectedNumber)
