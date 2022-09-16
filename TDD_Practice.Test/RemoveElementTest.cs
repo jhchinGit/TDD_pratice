@@ -4,7 +4,7 @@ namespace TDD_Practice.Test
 {
     internal class RemoveElementTest
     {
-        //[Test]
+        [Test]
         public void GIVEN_array_and_value___WHEN_RemoveElement___THEN_return_number_of_not_value_item()
         {
             CountRemainingNumber(array: GenerateArray(1), removeValue: 1, remainingValueCount: 0);
@@ -20,12 +20,6 @@ namespace TDD_Practice.Test
             CountRemainingNumber(array: GenerateArray(0, 1, 2, 2, 3, 0, 4, 2), removeValue: 2, remainingValueCount: 5);
         }
 
-        //[Test]
-        public void GIVEN_array_and_value___WHEN_RemoveElement___THEN_begin_element_sum_equal_to_remaining_count()
-        {
-            SumArray(array: GenerateArray(0, 1, 2, 2, 3, 0, 4, 2), removeValue: 2, remainingValueCount: 5);
-        }
-
         private static int[] GenerateArray(params int[] values)
         {
             return values;
@@ -34,18 +28,6 @@ namespace TDD_Practice.Test
         private static void CountRemainingNumber(int[] array, int removeValue, int remainingValueCount)
         {
             Assert.AreEqual(remainingValueCount, RemoveElementHelper.RemoveElement(ref array, removeValue));
-        }
-
-        private static void SumArray(int[] array, int removeValue, int remainingValueCount)
-        {
-            RemoveElementHelper.RemoveElement(ref array, removeValue);
-            int sum = 0;
-            for (int index = 0; index < remainingValueCount; index++)
-            {
-                sum += array[index];
-            }
-
-            Assert.AreEqual(remainingValueCount, sum);
         }
     }
 }

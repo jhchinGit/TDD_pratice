@@ -4,25 +4,11 @@
     {
         public static int RemoveElement(ref int[] arrayToRemove, int valueToRemove)
         {
-            int count = 0, newIndexCount = 0;
-            int[] newArray = new int[arrayToRemove.Length];
+            int count = 0;
             for (int index = 0; index < arrayToRemove.Length; index++)
                 if (arrayToRemove[index] != valueToRemove)
-                {
-                    newArray[newIndexCount++] = arrayToRemove[index];
-                    count++;
-                }
+                    arrayToRemove[count++] = arrayToRemove[index];
 
-            int swapIndex = 0;
-            for (int index = 0; index < arrayToRemove.Length; index++)
-            {
-                for (int x = index, y = 0; y < arrayToRemove.Length; y++)
-                {
-
-                }
-            }
-
-            arrayToRemove = newArray;
             return count;
         }
     }
