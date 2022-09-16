@@ -2,7 +2,7 @@
 {
     public class RemoveElementHelper
     {
-        public static int RemoveElement(ref int[] arrayToRemove, int valueToRemove)
+        public static int RemoveElement(int[] arrayToRemove, int valueToRemove)
         {
             int count = 0;
             for (int index = 0; index < arrayToRemove.Length; index++)

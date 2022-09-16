@@ -27,7 +27,7 @@ namespace TDD_Practice.Test
 
         private static void CountRemainingNumber(int[] array, int removeValue, int remainingValueCount)
         {
-            Assert.AreEqual(remainingValueCount, RemoveElementHelper.RemoveElement(ref array, removeValue));
+            Assert.AreEqual(remainingValueCount, RemoveElementHelper.RemoveElement(array, removeValue));
         }
     }
 }
