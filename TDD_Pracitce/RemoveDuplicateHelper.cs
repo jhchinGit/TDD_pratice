@@ -1,4 +1,6 @@
-﻿namespace TDD_Practice
+﻿using System.Linq;
+
+namespace TDD_Practice
 {
     public class RemoveDuplicateHelper
     {
