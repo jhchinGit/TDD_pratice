@@ -1,4 +1,6 @@
 ﻿using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 
 namespace TDD_Practice.Test
 {
@@ -117,6 +119,8 @@ namespace TDD_Practice.Test
 
         #endregion TreeNode
 
+        #region BinarySearch
+
         [Test]
         public void TestBinarySearch()
         {
@@ -126,11 +130,10 @@ namespace TDD_Practice.Test
             Assert.AreEqual(6, AdvanceSearch(new int[] { -2, 3, 4, 7, 8, 9, 11, 12, 13 }, 11));
             Assert.AreEqual(2, ShiftSearch(new int[] { 8, 9, 11, 13, -2, 3, 4, 7 }, 11));
             Assert.AreEqual(6, ShiftSearch(new int[] { -2, 3, 4, 7, 8, 9, 11, 13 }, 11));
-            Assert.AreEqual(6, ShiftSearch(new int[] { -2, 3, 4, 7, 8, 9, 11, 13 }, 11));
             Assert.AreEqual(-1, ShiftSearch(new int[] { -2, 3, 4, 7, 8, 9, 11, 13 }, 12));
             Assert.AreEqual(6, ShiftSearch(new int[] { -2, 3, 4, 7, 8, 9, 11, 12, 13 }, 11));
             Assert.AreEqual(8, ShiftSearch(new int[] { 3, 4, 7, 8, 9, 11, 12, 13, -2 }, -2));
-        } 
+        }
 
         private static int LinearSearch(int[] nums, int target)
         {
@@ -213,6 +216,111 @@ namespace TDD_Practice.Test
             }
 
             return -1;
+        }
+
+        #endregion BinarySearch
+
+        #region Quick Sort
+
+        //[Test]
+        // incomplete
+        public void TestQuickSort()
+        {
+            int[] actualNums = { -2, 3, -1, 5, 4, -3, 0 };
+            QuickSort(actualNums, 0, actualNums.Length - 1);
+
+            CollectionAssert.AreEqual(new int[] { -2, -1, -3, 0, 4, 3, 5 }, actualNums);
+        }
+
+        private static void QuickSort(int[] nums, int l, int r)
+        {
+            if (l >= r)
+            {
+                return;
+            }
+
+            int p = Partition(nums, l, r);
+
+            QuickSort(nums, l, p - 1);
+            QuickSort(nums, p + 1, r);
+        }
+
+        private static int Partition(int[] nums, int l, int r)
+        {
+            int pivot = nums[r];
+            int i = l - 1;
+
+            for (int j = l; j < r - 1; j++)
+            {
+                if (nums[j] < pivot)
+                {
+                    i++;
+
+                    int temp1 = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp1;
+                }
+            }
+
+            int temp2 = nums[i + 1];
+            nums[i + 1] = nums[r];
+            nums[r] = temp2;
+
+            return i + 1;
+        }
+
+        #endregion Quick Sort
+
+        [Test]
+        public void TestFibonacci()
+        {
+            var result = ProduceFibonacci(10);
+
+            Assert.IsTrue(IsFibonacci(result));
+        }
+
+        private static List<int> ProduceFibonacci(int count)
+        {
+            List<int> result = new List<int>();
+
+            while(count > 0)
+            {
+                count--;
+                if (result.Count == 0)
+                {
+                    result.Add(0);
+                    continue;
+                }
+                else if (result.Count == 1)
+                {
+                    result.Add(1);
+                    continue;
+                }
+
+                result.Add(result[result.Count - 2] + result[result.Count - 1]);
+            }
+
+            return result;
+        }
+
+        private static bool IsFibonacci(List<int> list)
+        {
+            for (int index = 0; index < list.Count; index++)
+            {
+                if (!IsPerfectSquare(5 * list[index] * list[index] + 4) && 
+                    !IsPerfectSquare(5 * list[index] * list[index] - 4))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private static bool IsPerfectSquare(int x)
+        {
+            int s = (int)Math.Sqrt(x);
+            return s * s == x;
         }
     }
 }
